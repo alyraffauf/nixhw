@@ -5,8 +5,8 @@
   ...
 }: {
   services = {
-    power-profiles-daemon.enable = true;
-    upower.enable = true;
+    power-profiles-daemon.enable = lib.mkDefault true;
+    upower.enable = lib.mkDefault true;
 
     tlp = {
       enable = !config.services.power-profiles-daemon.enable;

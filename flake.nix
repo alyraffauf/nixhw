@@ -17,7 +17,8 @@
     nixosModules = {
       framework-13-amd-7000 = import ./framework/13/amd-7000;
       framework-13-intel-11th = import ./framework/13/intel-11th;
-      lenovo-yoga9i-intel-13th = import ./lenovo/yoga9i/intel-13th;
+      lenovo-yoga-9i-intel-13th = import ./lenovo/yoga-9i/intel-13th;
+      thinkpad-t440p = import ./thinkpad/t440p;
     };
   };
 }
