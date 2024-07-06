@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ../../../common/bluetooth
     ../../../common/cpu/amd
     ../../../common/gpu/amd
     ../../../common/laptop
