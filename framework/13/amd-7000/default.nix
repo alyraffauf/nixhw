@@ -15,5 +15,4 @@
   ];
 
   boot.initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
-  hardware.acpilight.enable = true;
 }
