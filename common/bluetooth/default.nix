@@ -5,6 +5,8 @@
   ...
 }: {
   hardware = {
+    sound.enable = true;
+    
     bluetooth.enable = true;
 
     pulseaudio = {
