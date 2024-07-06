@@ -1,9 +1,7 @@
 {
   description = "Opinionated hardware configuration modules for NixOS";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
   outputs = {
     self,
@@ -19,6 +17,7 @@
     nixosModules = {
       framework-13-amd-7000 = import ./framework/13/amd-7000;
       framework-13-intel-11th = import ./framework/13/intel-11th;
+      lenovo-yoga9i-intel-13th = import ./lenovo/yoga9i/intel-13th;
     };
   };
 }
