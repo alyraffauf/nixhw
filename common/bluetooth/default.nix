@@ -5,8 +5,6 @@
   ...
 }: {
   hardware = {
-    sound.enable = true;
-
     bluetooth.enable = true;
 
     pulseaudio = {
@@ -14,4 +12,6 @@
       package = pkgs.pulseaudioFull; # Use extra Bluetooth codecs like aptX
     };
   };
+
+  sound.enable = true;
 }
