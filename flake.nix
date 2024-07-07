@@ -1,5 +1,5 @@
 {
-  description = "Opinionated hardware configuration modules for NixOS.";
+  description = "Opinionated hardware configuration modules + packages for NixOS.";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
@@ -30,5 +30,33 @@
       common-laptop-intel-cpu = import ./common/laptop/intel-cpu.nix;
       common-ssd = import ./common/ssd;
     };
+
+    packages =
+      nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ] (system: {
+        power-profile-adjuster = nixpkgs.legacyPackages."${system}".writeShellApplication {
+          name = "power-profile-adjuster";
+
+          runtimeInputs = [
+            nixpkgs.legacyPackages."${system}".power-profiles-daemon
+            nixpkgs.legacyPackages."${system}".libnotify
+          ];
+
+          text = ''
+            current_profile=$(powerprofilesctl get | tr -d '[:space:]')
+            if [ "$current_profile" == "power-saver" ]; then
+              powerprofilesctl set balanced
+            elif [ "$current_profile" == "balanced" ]; then
+              powerprofilesctl set performance
+            elif [ "$current_profile" == "performance" ]; then
+              powerprofilesctl set power-saver
+            fi
+            new_profile=$(powerprofilesctl get | tr -d '[:space:]')
+            notify-send "Power profile set to $new_profile."
+          '';
+        };
+      });
   };
 }
