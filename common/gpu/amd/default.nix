@@ -4,11 +4,6 @@
   pkgs,
   ...
 }: {
-  boot = {
-    initrd.kernelModules = ["amdgpu"];
-    kernelModules = ["amdgpu"];
-  };
-
   hardware.amdgpu = {
     initrd.enable = true;
 
