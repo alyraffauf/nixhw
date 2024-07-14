@@ -29,4 +29,10 @@
       };
     };
   };
+
+  systemd.services = {
+    fstrim.unitConfig.ConditionACPower = true;
+    nix-gc.unitConfig.ConditionACPower = true;
+    nixos-upgrade.unitConfig.ConditionACPower = true;
+  };
 }
