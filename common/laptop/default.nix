@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -13,11 +12,5 @@
     '';
 
     upower.enable = lib.mkDefault true;
-  };
-
-  systemd.services = {
-    fstrim.unitConfig.ConditionACPower = true;
-    nix-gc.unitConfig.ConditionACPower = true;
-    nixos-upgrade.unitConfig.ConditionACPower = true;
   };
 }
