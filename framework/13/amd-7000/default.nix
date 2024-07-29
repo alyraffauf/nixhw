@@ -15,5 +15,9 @@
     ../common.nix
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+  boot = {
+    initrd.availableKernelModules = ["nvme" "sd_mod" "thunderbolt" "usb_storage" "xhci_pci"];
+
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  };
 }

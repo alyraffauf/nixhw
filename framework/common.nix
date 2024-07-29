@@ -9,8 +9,6 @@
       framework-laptop-kmod
     ];
 
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-
     kernelModules = [
       # https://github.com/DHowett/framework-laptop-kmod?tab=readme-ov-file#usage
       "cros_ec_lpcs"
