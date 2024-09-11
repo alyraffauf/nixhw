@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -10,6 +9,12 @@
     pulseaudio = {
       enable = lib.mkForce false;
       package = pkgs.pulseaudioFull; # Use extra Bluetooth codecs like aptX
+
+      extraConfig = ''
+        load-module module-switch-on-connect
+      '';
+
+      support32Bit = true;
     };
   };
 
