@@ -5,9 +5,9 @@
   ...
 }: {
   boot = {
-    extraModulePackages = with config.boot.kernelPackages; [
-      framework-laptop-kmod
-    ];
+    # extraModulePackages = with config.boot.kernelPackages; [
+    #   framework-laptop-kmod
+    # ];
 
     kernelModules = [
       # https://github.com/DHowett/framework-laptop-kmod?tab=readme-ov-file#usage
@@ -16,7 +16,7 @@
     ];
   };
 
-  environment.systemPackages = [pkgs.framework-tool] ++ lib.optional (pkgs ? "fw-ectool") pkgs.fw-ectool;
+  # environment.systemPackages = [pkgs.framework-tool] ++ lib.optional (pkgs ? "fw-ectool") pkgs.fw-ectool;
 
   hardware = {
     enableAllFirmware = true;
