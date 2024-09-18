@@ -20,4 +20,6 @@
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   };
+
+  networking.networkmanager.wifi.powersave = true;
 }
