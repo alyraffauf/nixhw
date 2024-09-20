@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  environment.variables.VDPAU_DRIVER = "radeonsi";
+
   hardware.amdgpu = {
     initrd.enable = true;
 
