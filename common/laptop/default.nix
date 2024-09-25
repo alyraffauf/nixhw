@@ -19,21 +19,7 @@
 
     udev.extraRules = ''
       SUBSYSTEM=="power_supply", ATTR{online}=="1", ACTION=="change", RUN+="${lib.getExe pkgs.power-profiles-daemon} set balanced"
-
-      # Check for battery capacity and switch to power-saver if necessary
-      SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", \
-        RUN+="/bin/sh -c '\
-          if [ -f /sys/class/power_supply/BAT0/capacity ]; then \
-            CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity); \
-          elif [ -f /sys/class/power_supply/BAT1/capacity ]; then \
-            CAPACITY=$(cat /sys/class/power_supply/BAT1/capacity); \
-          else \
-            CAPACITY=100; \
-          fi; \
-          if [ $CAPACITY -lt 80 ]; then \
-            ${lib.getExe pkgs.power-profiles-daemon} set power-saver; \
-          fi' \
-        "
+      SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", RUN+="${lib.getExe pkgs.power-profiles-daemon} set power-saver"
     '';
 
     upower.enable = lib.mkDefault true;
